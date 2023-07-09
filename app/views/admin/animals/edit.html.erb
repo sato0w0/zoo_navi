@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="mt-4">
+    <div class="text-center">
+      <h3 class="col-md-4">動物の詳細編集</h3>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <%= form_with model: @animal, url: admin_animal_path(@animal), method: :patch do |f| %>
+      <table class="col-10 mt-5 mx-auto">
+        <tr>
+          <th><%= f.label :"動物画像" %></th>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"動物名" %></th>
+          <td><%= f.text_field :name, placeholder: "動物名", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"種類" %></th>
+          <td><%= f.collection_select :animal_type_id, AnimalType.all, :id, :name, include_blank: "選択してください" %></td>
+        </tr>
+      </table>
+      <div class="text-center">
+        <%= f.submit "変更を保存", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>

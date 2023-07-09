@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-3 col-sm-3">
+      <h3 class="text-center">動物一覧</h3>
+    </div>
+    <div class="col-md-7 col-sm-7"></div>
+    <div class="col-md-2 col-sm-6 text-center">
+      <%= link_to new_admin_animal_path, class: "btn" do %>
+        <i class="fas fa-plus"></i>
+      <% end %>
+    </div>
+  </div>
+  <table class="table table-borderless border-bottom border-top mt-4 bg-light">
+    <thead class="thead-light">
+      <tr>
+        <th>動物ID</th>
+        <th>動物名</th>
+        <th>種類</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @animals.each do |animal| %>
+        <tr>
+          <td><%= animal.id %></td>
+          <td><%= link_to animal.name, admin_animal_path(animal) %></td>
+          <td><%= animal.animal_type.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

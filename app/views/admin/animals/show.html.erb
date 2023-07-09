@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <h3 class="text-center">動物の詳細</h3>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-4 mx-auto">
+      <%= image_tag @animal.get_image(200, 130) %>
+    </div>
+    <div class="col-md-8">
+      <table class="col-md-7 col-sm-5 mx-auto">
+        <tr>
+          <th>動物名</th>
+          <td><%= @animal.name %></td>
+        </tr>
+        <tr>
+          <th>種類</th>
+          <td><%= @animal.animal_type.name %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="text-center mt-3">
+    <%= link_to "編集する", edit_admin_animal_path(@animal), class: "btn btn-success" %>
+  </div>
+</div>
