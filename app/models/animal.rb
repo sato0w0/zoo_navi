@@ -11,4 +11,12 @@ class Animal < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+
+  def self.search_for(word)
+    unless word.blank?
+      Animal.where("name LIKE ?", "%#{word}%")
+    else
+      Animal.where(name: word)
+    end
+  end
 end

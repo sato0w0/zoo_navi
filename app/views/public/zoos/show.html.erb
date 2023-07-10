@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-xl-10 col-md-9">
+      <div class="row">
+        <div class="col-sm-4">
+          <%= image_tag @zoo.get_image(150, 120) %>
+        </div>
+        <div class="col-sm-8">
+          <h4><%= @zoo.name %></h4>
+          <p><%= @zoo.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

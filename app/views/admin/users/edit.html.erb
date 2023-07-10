@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row mt-5 mb-3">
+    <div class="col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-start">
+      <h3><%= "#{@user.nickname}さんのユーザー情報編集" %></h3>
+    </div>
+  </div>
+  <div class="row">
+    <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
+      <div class="form-group">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td>ユーザーID</td>
+              <td><%= @user.id %></td>
+            </tr>
+            <tr>
+              <td>ニックネーム</td>
+              <td><%= f.text_field :nickname, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= f.text_field :email, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td>ユーザーステータス</td>
+              <td>
+                <%= f.radio_button :is_active, true, id: "is_active_true" %>
+                <%= f.label :is_active_true, "有効" %>
+                <%= f.radio_button :is_active, false, id: "is_active_false" %>
+                <%= f.label :is_active_false, "退会" %>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>

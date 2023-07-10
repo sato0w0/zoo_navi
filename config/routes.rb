@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :zoos,          only: %i(index show new create edit update)
     resources :animals,       only: %i(index show new create edit update)
     resources :animal_types,  only: %i(index create edit update)
-    resources :zoo_animals,   only: %i(update)
+    resources :users,         only: %i(index show edit update)
   end
 
   scope module: :public do
@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     get   'users/information'       =>  'users#show',   as: 'user'
     get   'users/information/edit', to: 'users#edit',   as: 'edit_user'
     patch 'users/information',      to: 'users#update', as: 'update_user'
+    get    'animals/search'                =>  'animals#search'
+    resources :zoos,       only: %i(index show)
+    resources :animals,       only: %i(index show)
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
