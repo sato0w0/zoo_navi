@@ -6,6 +6,7 @@ class Public::ZoosController < ApplicationController
 
   def show
     @zoo = Zoo.find(params[:id])
+    @zoo_animals = ZooAnimal.where(zoo_id: @zoo.id)
   end
 
   def search

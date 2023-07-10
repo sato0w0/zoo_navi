@@ -24,4 +24,22 @@
   <div class="text-center mt-3">
     <%= link_to "編集する", edit_admin_zoo_path(@zoo), class: "btn btn-success" %>
   </div>
+
+  <div class="row pt-5">
+    <h3 class="text-center">見られる動物</h3>
+  </div>
+  <div class="row pt-5">
+    <% @animals.each do |animal| %>
+      <div class="col-sm-3">
+        <p><%= image_tag animal.get_image(120, 80) %></p>
+        <div><%= animal.name %></div>
+        <% if @zoo_animals.exists?(animal_id: animal.id) %>
+          <%= link_to '解除', admin_zoo_zoo_animals_path(@zoo, animal_id: animal.id), method: :delete, class: "btn btn-sm btn-danger" %>
+        <% else %>
+          <%= link_to '登録', admin_zoo_zoo_animals_path(@zoo, animal_id: animal.id), method: :post, class: "btn btn-sm btn-success" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
 </div>

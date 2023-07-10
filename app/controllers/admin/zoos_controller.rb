@@ -19,7 +19,8 @@ class Admin::ZoosController < ApplicationController
 
   def show
     @zoo = Zoo.find(params[:id])
-    @animals = @zoo.animals
+    @animals = Animal.all
+    @zoo_animals = ZooAnimal.where(zoo_id: @zoo.id)
   end
 
   def edit
