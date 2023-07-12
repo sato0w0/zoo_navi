@@ -39,7 +39,7 @@ class Admin::ZoosController < ApplicationController
   private
 
   def zoo_params
-    params.require(:zoo).permit(:image, :name, :description)
+    params.require(:zoo).permit(:image, :name, :description, :address)
   end
 
 end

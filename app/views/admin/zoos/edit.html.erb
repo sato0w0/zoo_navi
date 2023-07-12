@@ -19,6 +19,10 @@
           <th><%= f.label :"動物園説明" %></th>
           <td><%= f.text_field :description, placeholder: "動物園説明", class: "form-control" %></td>
         </tr>
+        <tr>
+          <th><%= f.label :"住所" %></th>
+          <td><%= f.text_field :address, placeholder: "住所", class: "form-control" %></td>
+        </tr>
       </table>
       <div class="text-center">
         <%= f.submit "変更を保存", class: "btn btn-success" %>
