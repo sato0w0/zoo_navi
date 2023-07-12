@@ -1,0 +1,10 @@
+<div class="search_genre pb-5 border border-dark mb-5 bg-light">
+  <h6 class="text-center border-bottom border-dark">種類検索</h6>
+  <ul class="px-2">
+    <% zoos.each do |zoo| %>
+      <li style="list-style: none;">
+        <%= link_to zoo.name, zoos_path(name: zoo.name), class:"text-dark"%>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -15,6 +15,18 @@
         <ul class="navbar-nav ml-auto d-flex align-items-center">
           <% if admin_signed_in? %>
             <li>
+              <%= link_to "動物園一覧", admin_zoos_path, class: 'nav-link text-dark btn' %>
+            </li>
+            <li>
+              <%= link_to "動物一覧", admin_animals_path, class: 'nav-link text-dark btn' %>
+            </li>
+            <li>
+              <%= link_to "動物種一覧", admin_animal_types_path, class: 'nav-link text-dark btn' %>
+            </li>
+            <li>
+              <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark btn' %>
+            </li>
+            <li>
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark btn' %>
             </li>
           <% elsif user_signed_in? %>
@@ -22,9 +34,24 @@
               <div class="mr-5">ようこそ<%= current_user.nickname %>さん！！</div>
             </li>
             <li>
+              <%= link_to "動物園一覧", zoos_path, class: 'nav-link text-dark btn' %>
+            </li>
+            <li>
+              <%= link_to "動物一覧", animals_path, class: 'nav-link text-dark btn' %>
+            </li>
+            <li>
+              <%= link_to "マイページ", user_path, class: 'nav-link text-dark btn' %>
+            </li>
+            <li>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark btn' %>
             </li>
           <% else %>
+            <li>
+              <%= link_to "動物園一覧", zoos_path, class: 'nav-link text-dark btn' %>
+            </li>
+            <li>
+              <%= link_to "動物一覧", animals_path, class: 'nav-link text-dark btn' %>
+            </li>
             <li>
               <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark btn' %>
             </li>

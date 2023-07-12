@@ -1,7 +1,11 @@
 class Public::ZoosController < ApplicationController
 
   def index
-    @zoos = Zoo.all
+    if params[:name].present?
+      @zoos = Zoo.where(name: params[:name])
+    else
+      @zoos = Zoo.all
+    end
   end
 
   def show

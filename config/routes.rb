@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     get   'users/information/edit', to: 'users#edit',   as: 'edit_user'
     patch 'users/information',      to: 'users#update', as: 'update_user'
     get    'animals/search'                =>  'animals#search'
+    get    'zoos/search'                =>  'zoos#search'
     resources :zoos,       only: %i(index show)
     resources :animals,       only: %i(index show)
   end

@@ -2,12 +2,14 @@
   <div class="row pt-5">
     <div class="col-xl-10 col-md-9">
       <div class="row">
-        <div class="col-sm-4">
-          <%= image_tag @zoo.get_image(150, 120) %>
+        <div class="col-12">
+          <p><%= image_tag @zoo.get_image(1000, 1000) %></p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-sm-8">
-          <h4><%= @zoo.name %></h4>
-          <p><%= @zoo.description %></p>
+          <h3><%= @zoo.name %></h3>
+          <h5><%= @zoo.description %></h5>
         </div>
       </div>
     </div>
@@ -15,7 +17,9 @@
 
 
   <div class="row pt-5">
-    <h3 class="text-center">見られる動物</h3>
+    <div class="col-3">
+      <h3>見られる動物</h3>
+    </div>
   </div>
   <div class="row pt-5">
     <% @zoo_animals.each do |zoo_animals| %>
