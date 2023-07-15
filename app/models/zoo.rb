@@ -1,5 +1,6 @@
 class Zoo < ApplicationRecord
   has_many :zoo_animals
+  has_many :zoo_reviews
   has_many :animals, through: :zoo_animals
   has_one_attached :image
 
