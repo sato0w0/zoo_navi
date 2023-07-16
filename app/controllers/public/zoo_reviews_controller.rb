@@ -1,12 +1,14 @@
 class Public::ZooReviewsController < ApplicationController
 
   def show
+    @zoo = Zoo.find(params[:zoo_id])
     @zoo_review = ZooReview.find(params[:id])
     @review_comment = ReviewComment.new
   end
 
   def index
-    @zoo_reviews = ZooReview.all.order(params[:sort])
+    @zoo = Zoo.find(params[:zoo_id])
+    @zoo_reviews = @zoo.zoo_reviews.order(params[:sort])
     @zoo_review = ZooReview.new
   end
 
@@ -15,7 +17,7 @@ class Public::ZooReviewsController < ApplicationController
     @zoo_review.user_id = current_user.id
     @zoo_review.zoo_id = params[:zoo_id]
     if @zoo_review.save
-      redirect_to zoo_zoo_review_path(@zoo_review)
+      redirect_to zoo_zoo_review_path(@zoo_review.zoo, @zoo_review)
     else
       @zoo_reviews = ZooReview.all
       render 'index'
@@ -23,17 +25,22 @@ class Public::ZooReviewsController < ApplicationController
   end
 
   def edit
+    @zoo = Zoo.find(params[:zoo_id])
+    @zoo_review = ZooReview.find(params[:id])
   end
 
   def update
+    @zoo = Zoo.find(params[:zoo_id])
+    @zoo_review = ZooReview.find(params[:id])
     if @zoo_review.update(zoo_review_params)
-      redirect_to zoo_zoo_review_path(@zoo_review), notice: "You have updated book successfully."
+      redirect_to zoo_zoo_review_path(@zoo, @zoo_review)
     else
       render "edit"
     end
   end
 
   def destroy
+    @zoo_review = ZooReview.find(params[:id])
     @zoo_review.destroy
     redirect_to zoo_zoo_reviews_path
   end

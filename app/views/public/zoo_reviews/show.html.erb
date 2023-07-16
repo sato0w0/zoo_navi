@@ -1,38 +1,31 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
-      <h2>User info</h2>
-      <%= render 'users/info', user: @zoo_review.user %>
-      <h2 class="mt-3">New book</h2>
-      <%= render 'form', zoo_review: ZooReview.new %>
-    </div>
     <div class='col-md-8 offset-md-1'>
-  		<h2>Book detail</h2>
+  		<h2>レビュー詳細</h2>
   		<table class='table'>
   		  <tr>
           <td><%= link_to(@zoo_review.user) do %>
-            <%= image_tag @zoo_review.user.get_profile_image, size:"100x100" %><br>
-            <%= @zoo_review.user.name %>
+            <%= @zoo_review.user.nickname %>
             <% end %>
           </td>
-          <td><%= link_to @zoo_review.title, @zoo_review %></td>
+          <td><%= @zoo_review.title %></td>
           <td><%= @zoo_review.body %></td>
           <td class="review-comments-counter">
-            <%= render "review_comments/counter", zoo_review: @zoo_review %>
+            <%= render "public/review_comments/counter", zoo_review: @zoo_review %>
           </td>
           <td><%= render "static_rate", zoo_review: @zoo_review %></td>
           <% if @zoo_review.user == current_user %>
-            <td><%= link_to 'Edit', edit_zoo_review_path(@zoo_review), class: "btn btn-sm btn-success edit_zoo_review_#{@zoo_review.id}" %></td>
-            <td><%= link_to 'Destroy', @zoo_review, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_zoo_review_#{@zoo_review.id}" %></td>
+            <td><%= link_to 'Edit', edit_zoo_zoo_review_path(@zoo_review.zoo, @zoo_review), class: "btn btn-sm btn-success edit_zoo_review_#{@zoo_review.id}" %></td>
+            <td><%= link_to 'Destroy', zoo_zoo_review_path(@zoo_review.zoo, @zoo_review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_zoo_review_#{@zoo_review.id}" %></td>
           <% end %>
         </tr>
       </table>
 
       <div class="review-comments-index">
-        <%= render "review_comments/index", zoo_review: @zoo_review %>
+        <%= render "public/review_comments/index", zoo_review: @zoo_review %>
       </div>
 
-      <%= render "review_comments/form", zoo_review: @zoo_review, review_comment: @review_comment %>
+      <%= render "public/review_comments/form", zoo_review: @zoo_review, review_comment: @review_comment %>
 
     </div>
   </div>

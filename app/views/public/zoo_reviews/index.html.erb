@@ -1,11 +1,11 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
-      <h2>New book</h2>
+      <h2>レビュー投稿</h2>
       <%= render 'form', zoo_review: @zoo_review %>
     </div>
     <div class='col-md-8 offset-md-1'>
-      <h2>zoo_reviews</h2>
+      <h2>レビュー一覧</h2>
       <%= link_to "新しい順", zoo_zoo_reviews_path(sort: 'created_at DESC') %> | <%= link_to "評価の高い順", zoo_zoo_reviews_path(sort: 'rate DESC') %>
       <%= render 'index', zoo_reviews: @zoo_reviews%>
     </div>
