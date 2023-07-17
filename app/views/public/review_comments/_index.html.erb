@@ -5,13 +5,13 @@
 
         <td>
           <%= link_to user_path(review_comment.user) do %>
-            <%= review_comment.user.name %>
+            <%= review_comment.user.nickname %>
           <% end %>
         </td>
         <td><%= review_comment.comment %></td>
         <td>
           <% if review_comment.user == current_user %>
-            <%= link_to "Destroy", zoo_review_review_comment_path(zoo_review, review_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+            <%= link_to "Destroy", zoo_zoo_review_review_comment_path(@zoo, @zoo_review, review_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
           <% end %>
         </td>
       </tr>

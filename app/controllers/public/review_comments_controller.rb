@@ -8,7 +8,9 @@ class Public::ReviewCommentsController < ApplicationController
   end
 
   def destroy
-    @comment = ReviewComment.find_by(id: params[:id], zoo_review_id: params[:zoo_review_id])
+    @zoo = Zoo.find(params[:zoo_id])
+    @zoo_review = ZooReview.find(params[:zoo_review_id])
+    @comment = current_user.review_comments.find(params[:id])
     @comment.destroy
   end
 
