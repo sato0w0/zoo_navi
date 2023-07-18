@@ -12,11 +12,15 @@ class Zoo < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def self.search_for(word)
-    unless word.blank?
-      Animal.where("name LIKE ?", "%#{word}%")
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Zoo.where(name: content)
+    elsif method == 'forward'
+      Zoo.where('name LIKE ?', content+'%')
+    elsif method == 'backward'
+      Zoo.where('name LIKE ?', '%'+content)
     else
-      Animal.where(name: word)
+      Zoo.where('name LIKE ?', '%'+content+'%')
     end
   end
 end

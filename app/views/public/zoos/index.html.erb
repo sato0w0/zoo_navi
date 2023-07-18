@@ -5,19 +5,7 @@
     </div>
     <div class="col-xl-10 col-md-9">
       <h4 class="d-inline-block">動物園一覧</h4>
-      <div class="row">
-        <% @zoos.each do |zoo| %>
-          <div class="col-sm-3">
-            <p>
-              <%= link_to zoo_path(zoo) do %>
-                <%= image_tag zoo.get_image(120, 80) %>
-              <% end %>
-            </p>
-            <div><%= zoo.name %></div>
-            <div><%= zoo.description %></div>
-          </div>
-        <% end %>
-      </div>
+      <%= render 'index', zoos: @zoos%>
     </div>
   </div>
 </div>

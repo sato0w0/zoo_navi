@@ -1,0 +1,7 @@
+<% if @model == 'zoo' %>
+  <h3>Zoos search for "<%= @content %>"</h3>
+  <%= render 'public/zoos/index', zoos: @zoos %>
+<% elsif @model == 'zoo_review' %>
+  <h3>ZooReviews search for "<%= @content %>"</h3>
+  <%= render 'public/zoo_reviews/index', zoo_reviews: @zoo_reviews %>
+<% end %>

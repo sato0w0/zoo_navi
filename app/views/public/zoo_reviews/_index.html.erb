@@ -10,10 +10,10 @@
   <tbody>
     <% @zoo_reviews.each do |zoo_review| %>
       <tr>
-        <td><%= link_to zoo_review.title, zoo_zoo_review_path(@zoo, zoo_review), class: "zoo_review_#{zoo_review.id}" %></td>
+        <td><%= link_to zoo_review.title, zoo_zoo_review_path(zoo_review.zoo, zoo_review), class: "zoo_review_#{zoo_review.id}" %></td>
         <td><%= zoo_review.body %></td>
         <td><%= render "public/review_comments/counter", zoo_review: zoo_review %></td>
-        <td><%= render "static_rate", zoo_review: zoo_review %></td>
+        <td><%= render "public/zoo_reviews/static_rate", zoo_review: zoo_review %></td>
       </tr>
     <% end %>
   </tbody>
