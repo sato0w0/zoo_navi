@@ -107,7 +107,12 @@ ActiveRecord::Schema.define(version: 2023_07_14_210626) do
   create_table "zoos", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
+    t.string "region", null: false
     t.string "address", null: false
+    t.string "opening_hours", null: false
+    t.string "closing_day", null: false
+    t.string "admission", null: false
+    t.string "telephone_number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

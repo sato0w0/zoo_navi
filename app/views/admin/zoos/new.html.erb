@@ -20,8 +20,28 @@
           <td><%= f.text_field :description, placeholder: "動物園説明", class: "form-control" %></td>
         </tr>
         <tr>
+          <th><%= f.label :"地方" %></th>
+          <td><%= f.text_field :region, placeholder: "地方", class: "form-control" %></td>
+        </tr>
+        <tr>
           <th><%= f.label :"住所" %></th>
           <td><%= f.text_field :address, placeholder: "住所", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"開館時間" %></th>
+          <td><%= f.text_field :opening_hours, placeholder: "開館時間", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"休館日" %></th>
+          <td><%= f.text_field :closing_day, placeholder: "休館日", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"入館料" %></th>
+          <td><%= f.text_field :admission, placeholder: "入館料", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"電話番号" %></th>
+          <td><%= f.text_field :telephone_number, placeholder: "電話番号", class: "form-control" %></td>
         </tr>
       </table>
       <div class="text-center">
