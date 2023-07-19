@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root :to => 'homes#top'
+    get    'users/withdraw_confirm'  =>  'users#withdraw_confirm'
+    patch  'users/withdraw'          =>  'users#withdraw'
     get   'users/information'       =>  'users#show',   as: 'user'
     get   'users/information/edit', to: 'users#edit',   as: 'edit_user'
     patch 'users/information',      to: 'users#update', as: 'update_user'

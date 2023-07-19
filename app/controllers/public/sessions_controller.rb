@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :user_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -18,7 +19,22 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def user_state
+    @user = User.find_by(email: params[:user][:email])
+
+    if @user && @user.valid_password?(params[:user][:password])
+      if @user.is_active?
+        sign_in(@user)
+        flash[:notice] = "ログインしました。"
+        redirect_to root_path
+      else
+        flash[:danger] = "退会済みのアカウントです。ログインできません。"
+        redirect_to new_user_registration_path
+      end
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
