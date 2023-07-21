@@ -1,69 +1,65 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-      <% if admin_signed_in? %>
-        <h1><span class="maintitle">ZooNavi</span></h1>
-      <% else %>
-        <%= link_to root_path, class: "navbar-brand" do %>
-          <h1><span class="maintitle">ZooNavi</span></h1>
-        <% end %>
+  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <% if admin_signed_in? %>
+      <h1>ZooNavi</h1>
+    <% else %>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <h1>ZooNavi</h1>
       <% end %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto d-flex align-items-center">
-          <% if admin_signed_in? %>
-            <li>
-              <%= link_to "動物園一覧", admin_zoos_path, class: 'nav-link text-dark btn' %>
-            </li>
-            <li>
-              <%= link_to "動物一覧", admin_animals_path, class: 'nav-link text-dark btn' %>
-            </li>
-            <li>
-              <%= link_to "動物種一覧", admin_animal_types_path, class: 'nav-link text-dark btn' %>
-            </li>
-            <li>
-              <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark btn' %>
-            </li>
-            <li>
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark btn' %>
-            </li>
-          <% elsif user_signed_in? %>
-            <li class="d-flex align-items-center mr-5">
-              <div class="mr-5">ようこそ<%= current_user.nickname %>さん！！</div>
-            </li>
-            <li>
-              <%= link_to "動物園一覧", zoos_path, class: 'nav-link text-dark btn' %>
-            </li>
-            <li>
-              <%= link_to "動物一覧", animals_path, class: 'nav-link text-dark btn' %>
-            </li>
-            <li>
-              <%= link_to "マイページ", user_path, class: 'nav-link text-dark btn' %>
-            </li>
-            <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark btn' %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to "動物園一覧", zoos_path, class: 'nav-link text-dark btn' %>
-            </li>
-            <li>
-              <%= link_to "動物一覧", animals_path, class: 'nav-link text-dark btn' %>
-            </li>
-            <li>
-              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark btn' %>
-            </li>
-            <li>
-              <%= link_to "管理者ログイン", new_admin_session_path, class: 'nav-link text-dark btn' %>
-            </li>
-            <li>
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark btn' %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto d-flex align-items-center">
+        <% if admin_signed_in? %>
+          <li>
+            <%= link_to "動物園一覧", admin_zoos_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
+            <%= link_to "動物一覧", admin_animals_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
+            <%= link_to "動物種一覧", admin_animal_types_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
+            <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark btn' %>
+          </li>
+        <% elsif user_signed_in? %>
+          <li>
+            <%= link_to "動物園一覧", zoos_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
+            <%= link_to "動物一覧", animals_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
+            <%= link_to "マイページ", user_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark btn' %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "動物園一覧", zoos_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
+            <%= link_to "動物一覧", animals_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
+            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
+            <%= link_to "管理者ログイン", new_admin_session_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark btn' %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </nav>
 </header>

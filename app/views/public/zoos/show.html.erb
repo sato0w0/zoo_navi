@@ -1,40 +1,64 @@
 <div class="container">
-  <div class="row pt-5">
-    <div class="col-xl-10 col-md-9">
-      <div class="row">
-        <div class="col-12">
-          <p><%= image_tag @zoo.get_image(1000, 1000) %></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-8">
-          <h3><%= @zoo.name %></h3>
-          <h5><%= @zoo.description %></h5>
-          <h5><%= @zoo.address %></h5>
-          <h5><%= @zoo.opening_hours %></h5>
-          <h5><%= @zoo.closing_day %></h5>
-          <h5><%= @zoo.admission %></h5>
-          <h5><%= @zoo.telephone_number %></h5>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-12">
+      <p><%= image_tag @zoo.get_image(1000, 1000) %></p>
     </div>
   </div>
 
-
-  <div class="row pt-5">
-    <div class="col-3">
-      <h3>見られる動物</h3>
+  <div class="row">
+    <div class="col-12">
+      <h3><%= @zoo.name %></h3>
+      <h5><%= @zoo.description %></h5>
     </div>
   </div>
-  <div class="row pt-5">
-    <% @zoo_animals.each do |zoo_animals| %>
-      <div class="col-sm-3">
-        <p>
-          <%= image_tag zoo_animals.animal.get_image(120, 80) %>
-        </p>
-        <div><%= zoo_animals.animal.name %></div>
-      </div>
-    <% end %>
+
+  <div class="row pt-3">
+    <div class="col-12">
+      <table>
+        <tr>
+          <th>施設名</th>
+          <td><%= @zoo.name %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @zoo.address %></td>
+        </tr>
+        <tr>
+          <th>営業時間</th>
+          <td><%= @zoo.opening_hours %></td>
+        </tr>
+        <tr>
+          <th>定休日</th>
+          <td><%= @zoo.closing_day %></td>
+        </tr>
+        <tr>
+          <th>料金</th>
+          <td><%= @zoo.admission %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @zoo.telephone_number %></td>
+        </tr>
+      </table>
+    </div>
   </div>
+
+ <div class="row pt-5">
+  <div class="col-12">
+    <h3 class="text-center">園内の動物たち</h3>
+  </div>
+</div>
+<div class="row pt-5">
+  <% @zoo_animals.each do |zoo_animals| %>
+    <div class="col-2">
+      <%= link_to animal_path(zoo_animals.animal) do %>
+        <%= image_tag zoo_animals.animal.get_image(120, 80), style: "border-radius: 50%;" %>
+      <% end %>
+      <div><%= zoo_animals.animal.name %></div>
+    </div>
+  <% end %>
+</div>
+
+
 
 </div>
