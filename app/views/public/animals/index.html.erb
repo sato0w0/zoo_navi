@@ -1,23 +1,28 @@
-<div class="container">
-  <div class="row pt-5">
-    <div class="col-xl-2 col-md-3">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
       <%= render "admin/animal_types/search_animal_type", animal_types: AnimalType.all %>
     </div>
-    <div class="col-xl-10 col-md-9">
+  </div>
+
+  <div class="row">
+    <div class="col-12">
       <% if params[:name].nil? %>
-        <h4 class="d-inline-block">動物一覧</h4>
+        <h4 class="mb-4">動物一覧</h4>
       <% else %>
-        <h4 class="d-inline-block"><%= params[:name] %>一覧</h4>
+        <h4 class="mb-4"><%= params[:name] %>一覧</h4>
       <% end %>
       <div class="row">
         <% @animals.each do |animal| %>
-          <div class="col-sm-3">
-            <p>
+          <div class="col-3 mb-4">
+            <div class="card">
               <%= link_to animal_path(animal) do %>
-                <%= image_tag animal.get_image(120, 80) %>
+                <%= image_tag animal.get_image(240, 160), class: "card-img-top", style: "object-fit: cover; height: 160px;" %>
               <% end %>
-            </p>
-            <div><%= animal.name %></div>
+              <div class="card-body">
+                <h5 class="card-title"><%= animal.name %></h5>
+              </div>
+            </div>
           </div>
         <% end %>
       </div>

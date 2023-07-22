@@ -7,18 +7,31 @@
 
   <div class="row">
     <div class="col-12">
-      <h3><%= @zoo.name %></h3>
+      <h2><%= @zoo.name %></h2>
       <h5><%= @zoo.description %></h5>
     </div>
   </div>
 
-  <div class="row pt-3">
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+
+  <div class="row pt-5">
     <div class="col-12">
+      <h4>施設情報</h4>
       <table>
-        <tr>
-          <th>施設名</th>
-          <td><%= @zoo.name %></td>
-        </tr>
         <tr>
           <th>住所</th>
           <td><%= @zoo.address %></td>
@@ -42,23 +55,22 @@
       </table>
     </div>
   </div>
-
- <div class="row pt-5">
-  <div class="col-12">
-    <h3 class="text-center">園内の動物たち</h3>
-  </div>
 </div>
-<div class="row pt-5">
-  <% @zoo_animals.each do |zoo_animals| %>
-    <div class="col-2">
-      <%= link_to animal_path(zoo_animals.animal) do %>
-        <%= image_tag zoo_animals.animal.get_image(120, 80), style: "border-radius: 50%;" %>
-      <% end %>
-      <div><%= zoo_animals.animal.name %></div>
+
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-12">
+      <h3 class="text-center">園内の動物たち</h3>
     </div>
-  <% end %>
-</div>
-
-
-
+  </div>
+  <div class="row pt-5">
+    <% @zoo_animals.each do |zoo_animals| %>
+      <div class="col-2">
+        <%= link_to animal_path(zoo_animals.animal) do %>
+          <%= image_tag zoo_animals.animal.get_image(120, 80), style: "border-radius: 50%;" %>
+        <% end %>
+        <div><%= zoo_animals.animal.name %></div>
+      </div>
+    <% end %>
+  </div>
 </div>
