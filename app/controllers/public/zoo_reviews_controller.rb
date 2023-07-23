@@ -12,6 +12,11 @@ class Public::ZooReviewsController < ApplicationController
     @zoo_review = ZooReview.new
   end
 
+  def new
+    @zoo = Zoo.find(params[:zoo_id])
+    @zoo_review = ZooReview.new
+  end
+
   def create
     @zoo_review = ZooReview.new(zoo_review_params)
     @zoo_review.user_id = current_user.id

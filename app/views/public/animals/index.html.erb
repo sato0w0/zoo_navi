@@ -6,26 +6,27 @@
   </div>
 
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 text-center">
       <% if params[:name].nil? %>
         <h4 class="mb-4">動物一覧</h4>
       <% else %>
         <h4 class="mb-4"><%= params[:name] %>一覧</h4>
       <% end %>
-      <div class="row">
-        <% @animals.each do |animal| %>
-          <div class="col-3 mb-4">
-            <div class="card">
-              <%= link_to animal_path(animal) do %>
-                <%= image_tag animal.get_image(240, 160), class: "card-img-top", style: "object-fit: cover; height: 160px;" %>
-              <% end %>
-              <div class="card-body">
-                <h5 class="card-title"><%= animal.name %></h5>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
     </div>
+  </div>
+
+  <div class="row">
+    <% @animals.each do |animal| %>
+      <div class="col-3 mb-4">
+        <div class="card h-100">
+          <%= link_to animal_path(animal) do %>
+            <%= image_tag animal.get_image_fit(240, 160), class: "card-img-top", alt: animal.name %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= animal.name %></h5>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

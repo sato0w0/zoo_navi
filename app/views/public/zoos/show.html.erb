@@ -1,37 +1,21 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="col-12">
-      <p><%= image_tag @zoo.get_image(1000, 1000) %></p>
+      <%= image_tag @zoo.get_image(1000, 1000), class: "img-fluid rounded mb-4" %>
     </div>
   </div>
 
   <div class="row">
     <div class="col-12">
       <h2><%= @zoo.name %></h2>
-      <h5><%= @zoo.description %></h5>
+      <p><%= @zoo.description %></p>
     </div>
   </div>
-
-  <style>
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    th, td {
-      padding: 8px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-  </style>
 
   <div class="row pt-5">
     <div class="col-12">
       <h4>施設情報</h4>
-      <table>
+      <table class="table">
         <tr>
           <th>住所</th>
           <td><%= @zoo.address %></td>

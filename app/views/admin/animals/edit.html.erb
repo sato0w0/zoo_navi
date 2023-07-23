@@ -4,6 +4,7 @@
       <h3 class="col-md-4">動物の詳細編集</h3>
     </div>
   </div>
+
   <div class="table-responsive">
     <%= form_with model: @animal, url: admin_animal_path(@animal), method: :patch do |f| %>
       <table class="col-10 mt-5 mx-auto">
@@ -19,7 +20,24 @@
           <th><%= f.label :"種類" %></th>
           <td><%= f.collection_select :animal_type_id, AnimalType.all, :id, :name, include_blank: "選択してください" %></td>
         </tr>
+        <tr>
+          <th><%= f.label :"生息地" %></th>
+          <td><%= f.text_field :habitat, placeholder: "生息地", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"体長" %></th>
+          <td><%= f.text_field :body_length, placeholder: "体長", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"体重" %></th>
+          <td><%= f.text_field :body_weight, placeholder: "体重", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"特徴" %></th>
+          <td><%= f.text_field :feature, placeholder: "特徴", class: "form-control" %></td>
+        </tr>
       </table>
+
       <div class="text-center">
         <%= f.submit "変更を保存", class: "btn btn-success" %>
       </div>

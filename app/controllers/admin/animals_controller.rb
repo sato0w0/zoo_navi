@@ -37,7 +37,7 @@ class Admin::AnimalsController < ApplicationController
   private
 
   def animal_params
-    params.require(:animal).permit(:image, :name, :animal_type_id)
+    params.require(:animal).permit(:image, :name, :animal_type_id, :habitat, :body_length, :body_weight, :feature)
   end
 
 end

@@ -19,6 +19,22 @@
           <th><%= f.label :"種類" %></th>
           <td><%= f.collection_select :animal_type_id, AnimalType.all, :id, :name, include_blank: "選択してください" %></td>
         </tr>
+        <tr>
+          <th><%= f.label :"生息地" %></th>
+          <td><%= f.text_field :habitat, placeholder: "生息地", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"体長" %></th>
+          <td><%= f.text_field :body_length, placeholder: "体長", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"体重" %></th>
+          <td><%= f.text_field :body_weight, placeholder: "体重", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"特徴" %></th>
+          <td><%= f.text_field :feature, placeholder: "特徴", class: "form-control" %></td>
+        </tr>
       </table>
       <div class="text-center">
         <%= f.submit "新規登録", class: "btn btn-success" %>

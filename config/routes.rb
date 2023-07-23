@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get    'animals/search'                =>  'animals#search'
     get    'zoos/search'                =>  'zoos#search'
     resources :zoos, only: [:index, :show] do
-      resources :zoo_reviews, only: [:index, :show, :edit, :create, :destroy, :update] do
+      resources :zoo_reviews, only: [:index, :show, :new, :edit, :create, :destroy, :update] do
         resources :review_comments, only: [:create, :destroy]
       end
     end
