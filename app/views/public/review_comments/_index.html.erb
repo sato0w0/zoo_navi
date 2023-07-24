@@ -1,20 +1,22 @@
-<table>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>投稿者</th>
+      <th>コメント</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
   <tbody>
-      <% zoo_review.review_comments.each do |review_comment| %>
+    <% zoo_review.review_comments.each do |review_comment| %>
       <tr>
-
-        <td>
-          <%= link_to user_path(review_comment.user) do %>
-            <%= review_comment.user.nickname %>
-          <% end %>
-        </td>
-        <td><%= review_comment.comment %></td>
-        <td>
+        <th style="width: 20%;"><%= review_comment.user.nickname %></th>
+        <td style="width: 70%;"><%= review_comment.comment %></td>
+        <td style="width: 10%;">
           <% if review_comment.user == current_user %>
-            <%= link_to "Destroy", zoo_zoo_review_review_comment_path(@zoo, @zoo_review, review_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+            <%= link_to "削除", zoo_zoo_review_review_comment_path(@zoo, @zoo_review, review_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
           <% end %>
         </td>
       </tr>
-      <% end %>
+    <% end %>
   </tbody>
 </table>

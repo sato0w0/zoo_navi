@@ -1,7 +1,6 @@
 <div class='container pt-5'>
   <div class='row'>
     <div class="col-12">
-      <h1>レビュー編集</h1>
       <%= form_with model:@zoo_review, url: zoo_zoo_review_path(@zoo),local:true do |f| %>
         <div class="form-group">
           <%= f.label :タイトル %>
@@ -10,42 +9,14 @@
 
         <div class="form-group">
           <%= f.label :本文 %>
-          <%= f.text_area :body, class: 'form-control zoo_review_body' %>
+          <%= f.text_area :body, rows:'5', class: 'form-control zoo_review_body' %>
         </div>
-
-        <% if @zoo_review.id.nil? %>
-          <div class="form-group" id="star">
-            <%= f.label :rate %>
-            <%= f.hidden_field :rate, id: :review_star, class: 'form-control' %>
-            <div id="post_raty"></div>
-          </div>
-          <script>
-            $(document).on('turbolinks:load', function() {
-              let elem = document.querySelector('#post_raty');
-              if (elem == null) return;
-              elem.innerHTML = ""
-              let opt = {
-                starOn: "<%= asset_path('star-on.png') %>",
-                starOff: "<%= asset_path('star-off.png') %>",
-                starHalf: "<%= asset_path('star-half.png') %>",
-                scoreName: 'zoo_review[rate]',
-              };
-              raty(elem, opt);
-            });
-          </script>
-        <% else %>
-          <div class="form-group">
-            <%= render "static_rate", zoo_review: @zoo_review %>
-          </div>
-        <% end %>
 
         <div class="form-group">
-          <%= f.submit class: 'btn btn-success' %>
+          <%= f.submit "コメントを保存", class: 'btn btn-success' %>
+          <%= link_to '保存せずに戻る', zoo_zoo_review_path(@zoo, @zoo_review), class: "btn btn-danger zoo_review_#{@zoo_review.id}" %>
         </div>
       <% end %>
-
-      <%= link_to 'Show', zoo_zoo_review_path(@zoo, @zoo_review), class: "zoo_review_#{@zoo_review.id}" %> |
-      <%= link_to 'Back', zoo_zoo_reviews_path(@zoo), class: "back" %>
     </div>
   </div>
 </div>

@@ -1,52 +1,57 @@
-<div class="container">
-  <div class="mt-4">
-    <div class="text-center">
-      <h4 class="col-md-4 bg-light">動物園の新規登録</h4>
+<div class='container pt-5'>
+  <div class='row'>
+    <div class="col-12">
+      <%= form_with model: @zoo, url: admin_zoos_path do |f| %>
+        <div class="form-group">
+          <%= f.label :動物園画像 %>
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :動物園名 %>
+          <%= f.text_field :name, placeholder: "動物園名", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :動物園説明 %>
+          <%= f.text_area :description, rows:'5', placeholder: "動物園説明", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :地方 %>
+          <%= f.text_field :region, placeholder: "地方", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :住所 %>
+          <%= f.text_field :address, placeholder: "住所", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :開館時間 %>
+          <%= f.text_field :opening_hours, placeholder: "開館時間", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :休館日 %>
+          <%= f.text_field :closing_day, placeholder: "休館日", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :入館料 %>
+          <%= f.text_field :admission, placeholder: "入館料", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :電話番号 %>
+          <%= f.text_field :telephone_number, placeholder: "電話番号", class: "form-control" %>
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.submit "新規登録", class: "btn btn-success" %>
+          <%= link_to '新規登録せずに戻る', admin_zoos_path(@zoo), class: "btn btn-danger" %>
+        </div>
+      <% end %>
     </div>
-  </div>
-  <div class="table-responsive">
-    <%= form_with model: @zoo, url: admin_zoos_path do |f| %>
-      <table class="col-10 mt-5 mx-auto">
-        <tr>
-          <th><%= f.label :"動物園画像" %></th>
-          <td><%= f.file_field :image, accept: "image/*" %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :"動物園名" %></th>
-          <td><%= f.text_field :name, placeholder: "動物園名", class: "form-control" %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :"動物園説明" %></th>
-          <td><%= f.text_field :description, placeholder: "動物園説明", class: "form-control" %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :"地方" %></th>
-          <td><%= f.text_field :region, placeholder: "地方", class: "form-control" %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :"住所" %></th>
-          <td><%= f.text_field :address, placeholder: "住所", class: "form-control" %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :"開館時間" %></th>
-          <td><%= f.text_field :opening_hours, placeholder: "開館時間", class: "form-control" %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :"休館日" %></th>
-          <td><%= f.text_field :closing_day, placeholder: "休館日", class: "form-control" %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :"入館料" %></th>
-          <td><%= f.text_field :admission, placeholder: "入館料", class: "form-control" %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :"電話番号" %></th>
-          <td><%= f.text_field :telephone_number, placeholder: "電話番号", class: "form-control" %></td>
-        </tr>
-      </table>
-      <div class="text-center">
-        <%= f.submit "新規登録", class: "btn btn-success" %>
-      </div>
-    <% end %>
   </div>
 </div>

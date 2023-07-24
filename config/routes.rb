@@ -14,12 +14,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
-    resources :zoos,          only: %i(index show new create edit update) do
+    resources :zoos,          only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       resource :zoo_animals, only: [:create, :destroy]
     end
-    resources :animals,       only: %i(index show new create edit update)
-    resources :animal_types,  only: %i(index create edit update)
-    resources :users,         only: %i(index show edit update)
+    resources :animals,       only: [:index, :show, :new, :create, :edit, :update]
+    resources :animal_types,  only: [:index, :create, :edit, :update]
+    resources :users,         only: [:index, :show, :edit, :update]
   end
 
   scope module: :public do
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
         resources :review_comments, only: [:create, :destroy]
       end
     end
-    resources :animals,       only: %i(index show)
+    resources :animals,       only: [:index, :show]
     get '/search', to: 'searches#search'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

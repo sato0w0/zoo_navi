@@ -19,7 +19,7 @@ class Animal < ApplicationRecord
     end
     image.variant(resize_to_fit: [width, height]).processed
   end
-  
+
   def get_image_fill(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

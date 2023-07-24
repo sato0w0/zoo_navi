@@ -36,6 +36,12 @@ class Admin::ZoosController < ApplicationController
     end
   end
 
+  def destroy
+    @zoo = Zoo.find(params[:id])
+    @zoo.destroy
+    redirect_to admin_zoos_path
+  end
+
   private
 
   def zoo_params
