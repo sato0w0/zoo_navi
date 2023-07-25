@@ -21,11 +21,13 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-12 text-center">
-      <div><%= link_to "編集する", edit_user_path, class: "btn btn-success" %></div>
+  <% if @user.email != "guest@example.com" %>
+    <div class="row">
+      <div class="col-12 text-center">
+        <div><%= link_to "編集する", edit_user_path, class: "btn btn-success" %></div>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class='row pt-5'>
     <div class='col-12'>

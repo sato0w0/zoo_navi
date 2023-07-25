@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-light" style="background-color: #ffffbc;">
+  <nav class="navbar navbar-light" style="background-color: #ffea85;">
     <% if admin_signed_in? %>
       <div><%= image_tag "logo", style: "width: 100px; height: 50px; object-fit: cover;" %></div>
     <% else %>
@@ -27,6 +27,9 @@
             <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark btn' %>
           </li>
           <li>
+            <%= link_to "ZooNaviについて", home_about_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark btn' %>
           </li>
         <% elsif user_signed_in? %>
@@ -40,6 +43,9 @@
             <%= link_to "マイページ", user_path, class: 'nav-link text-dark btn' %>
           </li>
           <li>
+            <%= link_to "ZooNaviについて", home_about_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark btn' %>
           </li>
         <% else %>
@@ -50,10 +56,16 @@
             <%= link_to "動物一覧", animals_path, class: 'nav-link text-dark btn' %>
           </li>
           <li>
+            <%= link_to "ZooNaviについて", home_about_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
             <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark btn' %>
           </li>
           <li>
             <%= link_to "管理者ログイン", new_admin_session_path, class: 'nav-link text-dark btn' %>
+          </li>
+          <li>
+            <%= link_to "ゲストログイン", users_guest_sign_in_path, class: "nav-link text-dark btn sign_in", method: :post %>
           </li>
           <li>
             <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark btn' %>

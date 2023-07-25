@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  devise_scope :user do
+    post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
+  end
+
   namespace :admin do
     get '/' => 'homes#top'
     resources :zoos,         only: [:index, :show, :new, :create, :edit, :update, :destroy] do
@@ -24,7 +28,8 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    root :to => 'homes#top'
+    root :to                       => 'homes#top'
+    get   'home/about'             => 'homes#about'
     get   'users/withdraw_confirm' => 'users#withdraw_confirm'
     patch 'users/withdraw'         => 'users#withdraw'
     get   'users/information'      => 'users#show',   as: 'user'
