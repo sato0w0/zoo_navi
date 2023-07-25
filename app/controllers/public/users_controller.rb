@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
     @user = current_user
+    @zoo_reviews = @user.zoo_reviews
   end
 
   def edit
@@ -29,7 +30,7 @@ class Public::UsersController < ApplicationController
       redirect_to root_path
     elsif params[:commit] == "退会しない"
       flash[:notice] = "退会処理がキャンセルされました。"
-      redirect_to users_path
+      redirect_to user_path
     end
   end
 

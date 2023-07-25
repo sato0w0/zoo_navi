@@ -1,7 +1,11 @@
 class Admin::AnimalsController < ApplicationController
 
   def index
-    @animals = Animal.all
+    if params[:name].nil?
+      @animals = Animal.all
+    else
+      @animals = AnimalType.find_by(name: params[:name]).animals
+    end
   end
 
   def new

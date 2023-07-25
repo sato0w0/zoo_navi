@@ -1,10 +1,15 @@
-<div class='container pt-5'>
-  <div class='row'>
-    <div class='col-3'>
-      <h3>レビュー一覧</h3>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-4">
+      <div><%= link_to '動物園詳細へ戻る', zoo_path(@zoo), class: "btn btn-primary" %></div>
     </div>
-    <div class='col-7'>
-      <%= link_to "新しい順", zoo_zoo_reviews_path(sort: 'created_at DESC') %> | <%= link_to "評価の高い順", zoo_zoo_reviews_path(sort: 'rate DESC') %>
+    <div class='col-8'>
+      <div><%= render 'public/searches/form' %></div>
+    </div>
+  </div>
+  <div class='row pt-4'>
+    <div class='col-10'>
+      <h3><%= @zoo.name %>のレビュー一覧</h3>
     </div>
     <div class='col-2'>
       <%= link_to 'レビューを投稿', new_zoo_zoo_review_path, class: "btn btn-success" %>
@@ -13,6 +18,7 @@
 
   <div class='row'>
     <div class='col-12'>
+      <%= link_to "新しい順", zoo_zoo_reviews_path(sort: 'created_at DESC') %> | <%= link_to "評価の高い順", zoo_zoo_reviews_path(sort: 'rate DESC') %>
       <%= render 'index', zoo_reviews: @zoo_reviews%>
     </div>
   </div>

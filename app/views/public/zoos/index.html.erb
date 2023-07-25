@@ -1,6 +1,4 @@
-<div class="container">
-  <h4>動物園一覧</h4>
-  <!-- @zoosをregionごとにグループ化して繰り返す -->
+<div class="container pt-3">
   <% @zoos.group_by(&:region).each do |region, zoos| %>
     <div class="row pt-4">
       <div class="col-12 pt-2">

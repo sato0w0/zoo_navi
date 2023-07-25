@@ -1,34 +1,36 @@
-<div class="container">
-  <div class="row mt-5 mb-3">
-    <div class="col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-start">
-      <h3>ユーザー一覧</h3>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-3">
+      <h3>会員一覧</h3>
     </div>
   </div>
   <div class="row">
     <table class="table bg-light">
       <thead class="thead-light">
         <tr>
-          <th>ユーザーID</th>
+          <th>会員ID</th>
           <th>ニックネーム</th>
           <th>メールアドレス</th>
-          <th>ユーザーステータス</th>
+          <th>会員ステータス</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%= user.id %></td>
-            <td>
+            <td style="width: 15%;"><%= user.id %></td>
+            <td style="width: 20%;">
               <%= link_to admin_user_path(user.id) do %>
                 <%= user.nickname %>
               <% end %>
             </td>
-            <td><%= user.email %></td>
+            <td style="width: 35%;"><%= user.email %></td>
             <% if user.is_active == true %>
-              <td class="text-success font-weight-bold">有効</td>
+              <td class="text-success font-weight-bold" style="width: 20%;">有効</td>
             <% else %>
-              <td class="text-secondary font-weight-bold">退会</td>
+              <td class="text-secondary font-weight-bold" style="width: 20%;">退会</td>
             <% end %>
+            <td style="width: 10%;"><%= link_to "編集する", edit_admin_user_path(user.id), class: "btn btn-sm btn-success" %></td>
           </tr>
         <% end %>
       </tbody>

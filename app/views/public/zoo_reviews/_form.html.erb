@@ -35,7 +35,8 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-success' %>
+  <div class="form-group text-center">
+    <%= f.submit "投稿する", class: 'btn btn-success' %>
+    <%= link_to '投稿せずに戻る', zoo_zoo_reviews_path(@zoo), class: "btn btn-danger" %>
   </div>
 <% end %>

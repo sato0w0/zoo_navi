@@ -1,0 +1,22 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-12'>
+      <div><%= link_to '会員詳細へ戻る', admin_user_path(@user.id), class: "btn btn-success" %></div>
+      <div class="d-flex justify-content-between align-items-center pt-5">
+        <h3><%= @zoo_review.title %></h3>
+          <div>
+            <%= link_to '削除', admin_user_zoo_review_path(@user.id, @zoo_review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger destroy_zoo_review_#{@zoo_review.id}" %>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='row pt-2'>
+    <div class='col-12'>
+      <div><%= render "public/zoo_reviews/static_rate", zoo_review: @zoo_review %></div>
+      <div>投稿者：<%= @zoo_review.user.nickname %></div>
+      <p class='pt-3'><%= @zoo_review.body %></p>
+      <div class='pt-5'><%= render "admin/review_comments/index", zoo_review: @zoo_review %></div>
+    </div>
+  </div>
+</div>

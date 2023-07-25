@@ -4,15 +4,10 @@ class ZooReview < ApplicationRecord
   has_many :review_comments, dependent: :destroy
 
   def self.search_for(content, method)
-    if method == 'perfect'
-      ZooReview.where(title: content)
-    elsif method == 'forward'
-      ZooReview.where('title LIKE ?', content+'%')
-    elsif method == 'backward'
-      ZooReview.where('title LIKE ?', '%'+content)
+    if method == 'partial'
+      ZooReview.where('title LIKE ? OR body LIKE ?', "%#{content}%", "%#{content}%")
     else
-      ZooReview.where('title LIKE ?', '%'+content+'%')
+      ZooReview.where('title = ? OR body = ?', content, content)
     end
   end
-
 end

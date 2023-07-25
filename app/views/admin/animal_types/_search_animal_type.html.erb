@@ -1,7 +1,21 @@
 <div class="btn-group d-flex mb-3">
-  <% animal_types.each do |animal_type| %>
-    <%= link_to animals_path(name: animal_type.name), class: "btn btn-light text-dark" do %>
-      <%= animal_type.name %>
+  <% if admin_signed_in? %>
+    <%= link_to admin_animals_path, class: "btn btn-light text-dark" do %>
+      全て
+    <% end %>
+    <% animal_types.each do |animal_type| %>
+      <%= link_to admin_animals_path(name: animal_type.name), class: "btn btn-light text-dark" do %>
+        <%= animal_type.name %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= link_to animals_path, class: "btn btn-light text-dark" do %>
+      全て
+    <% end %>
+    <% animal_types.each do |animal_type| %>
+      <%= link_to animals_path(name: animal_type.name), class: "btn btn-light text-dark" do %>
+        <%= animal_type.name %>
+      <% end %>
     <% end %>
   <% end %>
 </div>

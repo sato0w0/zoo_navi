@@ -1,41 +1,71 @@
 <div class="container">
-  <div class="row mt-5 mb-3">
-    <div class="col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-start">
-      <h3><%= "#{@user.nickname}さんの会員詳細" %></h3>
+  <div class="row">
+    <div class="col-12">
+      <div><%= link_to '会員一覧へ戻る', admin_users_path, class: "btn btn-success" %></div>
+      <h3 class="pt-5"><%= "#{@user.nickname}さんの会員詳細" %></h3>
     </div>
   </div>
   <div class="row">
-    <table class="table table-borderless">
+    <table class="table bg-light">
+      <thead class="thead-light">
+        <tr>
+          <th>ユーザーID</th>
+          <th>ニックネーム</th>
+          <th>メールアドレス</th>
+          <th>会員ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
       <tbody>
-        <tr>
-          <td class="col-3 col-sm-2">ユーザーID</td>
-          <td class="col-9 col-sm-8"><%= @user.id %></td>
-        </tr>
-        <tr>
-          <td class="col-3 col-sm-2">ニックネーム</td>
-          <td class="col-9 col-sm-8"><%= @user.nickname %></td>
-        </tr>
-        <tr>
-          <td class="col-3 col-sm-2">メールアドレス</td>
-          <td class="col-9 col-sm-8"><%= @user.email %></td>
-        </tr>
-        <tr>
-          <td class="col-3 col-sm-2">ユーザーステータス</td>
-          <% if @user.is_active == true %>
-            <td class="col-9 col-sm-8 text-success font-weight-bold">有効</td>
-          <% else %>
-            <td class="col-9 col-sm-8 text-secondary font-weight-bold">退会</td>
-          <% end %>
-        </tr>
-        <tr>
-          <td class="col-2"></td>
-          <td class="col-12 col-sm-10">
-            <div class="d-flex flex-column flex-sm-row">
-              <%= link_to "編集する", edit_admin_user_path(@user.id), class: "btn btn-success mb-2 mb-sm-0" %>
-            </div>
-          </td>
-        </tr>
+          <tr>
+            <td style="width: 15%;"><%= @user.id %></td>
+            <td style="width: 20%;"><%= @user.nickname %></td>
+            <td style="width: 35%;"><%= @user.email %></td>
+            <% if @user.is_active == true %>
+              <td class="text-success font-weight-bold" style="width: 20%;">有効</td>
+            <% else %>
+              <td class="text-secondary font-weight-bold" style="width: 20%;">退会</td>
+            <% end %>
+            <td style="width: 10%;"><%= link_to "編集する", edit_admin_user_path(@user.id), class: "btn btn-sm btn-success" %></td>
+          </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class='row pt-5'>
+    <div class='col-12'>
+      <h3><%= "#{@user.nickname}さんのレビュー一覧" %></h3>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-12'>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>タイトル</th>
+            <th>本文</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @zoo_reviews.each do |zoo_review| %>
+            <tr>
+              <th style="width: 30%;"><%= link_to zoo_review.title, admin_user_zoo_review_path(@user.id, zoo_review), class: "zoo_review_#{zoo_review.id}" %></th>
+              <td>
+                <% if zoo_review.body.length <= 100 %>
+                  <%= zoo_review.body %>
+                <% else %>
+                  <%= truncate(zoo_review.body, length: 100) %>
+                  <%= link_to "もっと読む", admin_user_zoo_review_path(@user.id, zoo_review) %>
+                <% end %>
+              </td>
+              <td style="width: 15%;"><%= render "public/review_comments/counter", zoo_review: zoo_review %></td>
+              <td style="width: 15%;"><%= render "public/zoo_reviews/static_rate", zoo_review: zoo_review %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

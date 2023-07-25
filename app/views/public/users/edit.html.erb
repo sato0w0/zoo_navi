@@ -1,28 +1,24 @@
-<div class="container">
-  <div class="row mt-5 mb-3">
-    <h3>会員情報編集</h3>
-  </div>
-  <div class="row">
-    <%= form_with model: @user, url: update_user_path, method: :patch do |f| %>
-      <div class="form-group table-responsive">
-        <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <td>ニックネーム</td>
-              <td><%= f.text_field :nickname, class: "form-control" %></td>
-            </tr>
-            <tr>
-              <td>メールアドレス</td>
-              <td><%= f.text_field :email, class: "form-control" %></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><%= f.submit "編集内容を保存", class: "btn btn-success btn-block" %></td>
-              <td><%= link_to "退会する", users_withdraw_confirm_path, class: "btn btn-danger ml-5" %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    <% end %>
+<div class='container pt-5'>
+  <div class='row'>
+    <div class="col-3"></div>
+    <div class="col-6">
+      <h3 class="text-center">会員情報編集</h2>
+      <%= form_with model: @user, url: update_user_path, method: :patch do |f| %>
+        <div class="form-group">
+          <%= f.label :ニックネーム %>
+          <%= f.text_field :nickname, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :メールアドレス %>
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+          <%= link_to "退会する", users_withdraw_confirm_path, class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

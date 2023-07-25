@@ -10,6 +10,7 @@ class Public::AnimalsController < ApplicationController
 
   def show
     @animal = Animal.find(params[:id])
+    @zoos = @animal.zoos.order(:region)
   end
 
   def search

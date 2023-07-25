@@ -5,6 +5,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @zoo_reviews = @user.zoo_reviews
   end
 
   def edit

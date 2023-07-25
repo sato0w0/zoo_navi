@@ -19,7 +19,7 @@
 
         <div class="form-group">
           <%= f.label :地方 %>
-          <%= f.text_field :region, placeholder: "地方", class: "form-control" %>
+          <%= f.collection_select :region, regions_for_select, :to_s, :humanize, { prompt: '選択してください' }, class: "form-control" %>
         </div>
 
         <div class="form-group">

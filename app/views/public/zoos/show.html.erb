@@ -1,5 +1,11 @@
-<div class="container mt-5">
+<div class="container pt-3">
   <div class="row">
+    <div class="col-12">
+      <div><%= link_to '動物園一覧へ戻る', zoos_path, class: "btn btn-primary" %></div>
+    </div>
+  </div>
+
+  <div class="row pt-2">
     <div class="col-12 text-center">
       <%= image_tag @zoo.get_image_fill(1100, 500), class: "img-fluid rounded mb-4" %>
     </div>

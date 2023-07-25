@@ -27,16 +27,4 @@ class Zoo < ApplicationRecord
     end
     image.variant(resize_to_fill: [width, height]).processed
   end
-
-  def self.search_for(content, method)
-    if method == 'perfect'
-      Zoo.where(name: content)
-    elsif method == 'forward'
-      Zoo.where('name LIKE ?', content+'%')
-    elsif method == 'backward'
-      Zoo.where('name LIKE ?', '%'+content)
-    else
-      Zoo.where('name LIKE ?', '%'+content+'%')
-    end
-  end
 end
