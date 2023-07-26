@@ -1,17 +1,18 @@
 <div id="rate_<%= zoo_review.id %>">
-<script>
-$(document).on('turbolinks:load', function() {
-  let elem = document.querySelector('#rate_<%= zoo_review.id %>');
-  if (elem == null) return;
+  <script>
+    $(document).on('turbolinks:load', function() {
+      let elem = document.querySelector('#rate_<%= zoo_review.id %>');
+      if (elem == null) return;
 
-  elem.innerHTML = "";
-  let opt = {
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    starHalf: "<%= asset_path('star-half.png') %>",
-    score: "<%= zoo_review.rate %>",
-    readOnly: true,
-  };
-  raty(elem, opt);
-});
-</script>
+      elem.innerHTML = "";
+      let opt = {
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        score: "<%= zoo_review.rate %>",
+        readOnly: true,
+      };
+      raty(elem, opt);
+    });
+  </script>
+</div>

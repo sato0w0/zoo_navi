@@ -1,4 +1,5 @@
 class Public::ReviewCommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     zoo_review = ZooReview.find(params[:zoo_review_id])

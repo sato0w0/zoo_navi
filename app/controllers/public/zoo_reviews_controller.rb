@@ -1,4 +1,5 @@
 class Public::ZooReviewsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
   def show
     @zoo = Zoo.find(params[:zoo_id])
@@ -9,7 +10,6 @@ class Public::ZooReviewsController < ApplicationController
   def index
     @zoo = Zoo.find(params[:zoo_id])
     @zoo_reviews = @zoo.zoo_reviews.order(params[:sort])
-    @zoo_review = ZooReview.new
   end
 
   def new
@@ -24,8 +24,8 @@ class Public::ZooReviewsController < ApplicationController
     if @zoo_review.save
       redirect_to zoo_zoo_review_path(@zoo_review.zoo, @zoo_review)
     else
-      @zoo_reviews = ZooReview.all
-      render 'index'
+      @zoo = Zoo.find(params[:zoo_id])
+      render :new
     end
   end
 

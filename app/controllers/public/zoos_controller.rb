@@ -13,8 +13,4 @@ class Public::ZoosController < ApplicationController
     @zoo_animals = ZooAnimal.where(zoo_id: @zoo.id)
   end
 
-  def search
-    @zoos = Zoo.search_for(params[:word])
-  end
-
 end

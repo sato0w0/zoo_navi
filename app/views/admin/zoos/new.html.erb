@@ -1,5 +1,19 @@
-<div class='container pt-5'>
-  <div class='row'>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">動物園の新規登録</h3>
+      <% if @zoo.errors.any? %>
+        <%= @zoo.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @zoo.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row pt-5">
     <div class="col-12">
       <%= form_with model: @zoo, url: admin_zoos_path do |f| %>
         <div class="form-group">
@@ -14,7 +28,7 @@
 
         <div class="form-group">
           <%= f.label :動物園説明 %>
-          <%= f.text_area :description, rows:'5', placeholder: "動物園説明", class: "form-control" %>
+          <%= f.text_area :description, rows: 5, placeholder: "動物園説明", class: "form-control" %>
         </div>
 
         <div class="form-group">
@@ -28,17 +42,17 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :開館時間 %>
+          <%= f.label :開園時間 %>
           <%= f.text_field :opening_hours, placeholder: "開館時間", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :休館日 %>
+          <%= f.label :休園日 %>
           <%= f.text_field :closing_day, placeholder: "休館日", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :入館料 %>
+          <%= f.label :入園料 %>
           <%= f.text_field :admission, placeholder: "入館料", class: "form-control" %>
         </div>
 

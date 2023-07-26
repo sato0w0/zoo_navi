@@ -1,7 +1,7 @@
 <div class="container pt-3">
   <div class="row">
     <div class="col-12">
-      <div><%= link_to '動物園一覧へ戻る', zoos_path, class: "btn btn-primary" %></div>
+      <%= link_to '動物園一覧へ戻る', zoos_path, class: "btn btn-primary" %>
     </div>
   </div>
 
@@ -16,43 +16,11 @@
       <h2><%= @zoo.name %></h2>
     </div>
     <div class="col-2">
-      <div><%= link_to 'レビュー一覧', zoo_zoo_reviews_path(@zoo), class: "btn btn-success" %></div>
+      <%= link_to 'レビュー一覧', zoo_zoo_reviews_path(@zoo), class: "btn btn-success" %>
     </div>
   </div>
 
-  <div class="row pt-3">
-    <div class="col-12">
-      <p><%= @zoo.description %></p>
-    </div>
-  </div>
-
-  <div class="row pt-5">
-    <div class="col-12">
-      <h4>施設情報</h4>
-      <table class="table">
-        <tr>
-          <th>住所</th>
-          <td><%= @zoo.address %></td>
-        </tr>
-        <tr>
-          <th>営業時間</th>
-          <td><%= @zoo.opening_hours %></td>
-        </tr>
-        <tr>
-          <th>定休日</th>
-          <td><%= @zoo.closing_day %></td>
-        </tr>
-        <tr>
-          <th>料金</th>
-          <td><%= @zoo.admission %></td>
-        </tr>
-        <tr>
-          <th>電話番号</th>
-          <td><%= @zoo.telephone_number %></td>
-        </tr>
-      </table>
-    </div>
-  </div>
+  <%= render 'zoo_info', zoo: @zoo %>
 </div>
 
 <div class="container">
@@ -62,14 +30,15 @@
     </div>
   </div>
   <div class="row pt-5">
-    <% @zoo_animals.each do |zoo_animals| %>
+    <% sorted_zoo_animals = @zoo_animals.sort_by { |zoo_animal| [zoo_animal.animal.animal_type.id, zoo_animal.animal.id] } %>
+    <% sorted_zoo_animals.each do |zoo_animal| %>
       <div class="col-3 mb-4">
         <div class="card h-100">
-          <%= link_to animal_path(zoo_animals.animal) do %>
-            <%= image_tag zoo_animals.animal.get_image_fit(240, 160), class: "card-img-top", alt: zoo_animals.animal.name %>
+          <%= link_to animal_path(zoo_animal.animal) do %>
+            <%= image_tag zoo_animal.animal.get_image_fill(240, 160), class: "card-img-top", alt: zoo_animal.animal.name %>
           <% end %>
           <div class="card-body">
-            <h5 class="card-title text-center"><%= zoo_animals.animal.name %></h5>
+            <h5 class="card-title text-center"><%= zoo_animal.animal.name %></h5>
           </div>
         </div>
       </div>

@@ -4,6 +4,14 @@ class Animal < ApplicationRecord
   belongs_to :animal_type
   has_one_attached :image
 
+  validates :image,       presence: true
+  validates :name,        presence: true
+  validates :animal_type, presence: true
+  validates :habitat,     presence: true
+  validates :body_length, presence: true
+  validates :body_weight, presence: true
+  validates :feature,     presence: true
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -28,11 +36,4 @@ class Animal < ApplicationRecord
     image.variant(resize_to_fill: [width, height]).processed
   end
 
-  def self.search_for(word)
-    unless word.blank?
-      Animal.where("name LIKE ?", "%#{word}%")
-    else
-      Animal.where(name: word)
-    end
-  end
 end

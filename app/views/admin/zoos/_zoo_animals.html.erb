@@ -1,0 +1,27 @@
+<div class="row pt-4">
+  <div class="col-6">
+    <table class="table bg-light">
+      <thead class="thead-light">
+        <tr>
+          <th style="width: 80%;">動物名</th>
+          <th style="width: 20%;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% sorted_animals = @animals.sort_by { |animal| [animal.animal_type.id, animal.id] } %>
+        <% sorted_animals.each do |animal| %>
+          <tr>
+            <td><%= animal.name %></td>
+            <td>
+              <% if @zoo_animals.exists?(animal_id: animal.id) %>
+                <%= link_to '登録中', admin_zoo_zoo_animals_path(@zoo, animal_id: animal.id), method: :delete, class: "btn btn-sm btn-success" %>
+              <% else %>
+                <%= link_to '解除中', admin_zoo_zoo_animals_path(@zoo, animal_id: animal.id), method: :post, class: "btn btn-sm btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

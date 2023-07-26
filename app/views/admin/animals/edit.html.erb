@@ -1,4 +1,18 @@
 <div class='container pt-5'>
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">動物情報の編集</h3>
+      <% if @animal.errors.any? %>
+        <%= @animal.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @animal.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
   <div class='row'>
     <div class="col-12">
       <%= form_with model: @animal, url: admin_animal_path(@animal), method: :patch do |f| %>
@@ -14,7 +28,7 @@
 
         <div class="form-group">
           <%= f.label :種類 %>
-          <%= f.collection_select :animal_type_id, AnimalType.all, :id, :name, include_blank: "選択してください" %>
+          <%= f.collection_select :animal_type_id, AnimalType.all, :id, :name, include_blank: "選択してください", class: "form-control" %>
         </div>
 
         <div class="form-group">

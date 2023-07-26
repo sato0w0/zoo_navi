@@ -1,4 +1,5 @@
 class Admin::AnimalTypesController < ApplicationController
+  before_action :authenticate_admin!
 
   def create
     animal_type = AnimalType.new(animal_type_params)

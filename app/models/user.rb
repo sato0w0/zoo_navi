@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :zoo_reviews
+  has_many :zoo_reviews,     dependent: :destroy
   has_many :review_comments, dependent: :destroy
 
   GUEST_USER_EMAIL = "guest@example.com"

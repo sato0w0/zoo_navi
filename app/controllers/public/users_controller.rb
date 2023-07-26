@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
 
   def show
@@ -28,10 +29,8 @@ class Public::UsersController < ApplicationController
     if params[:commit] == "退会する"
       user.update(is_active: false)
       sign_out(user)
-      flash[:notice] = "退会処理が完了しました。ご利用ありがとうございました。"
       redirect_to root_path
     elsif params[:commit] == "退会しない"
-      flash[:notice] = "退会処理がキャンセルされました。"
       redirect_to user_path
     end
   end
@@ -43,8 +42,7 @@ class Public::UsersController < ApplicationController
   end
 
   def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.email == "guest@example.com"
+    if current_user.email == "guest@example.com"
       redirect_to user_path(current_user)
     end
   end

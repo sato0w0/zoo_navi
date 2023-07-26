@@ -1,7 +1,7 @@
 <div class="container pt-3">
   <div class="row">
     <div class="col-12">
-      <div><%= link_to '動物園一覧へ戻る', admin_zoos_path, class: "btn btn-danger" %></div>
+      <%= link_to '動物園一覧へ戻る', admin_zoos_path, class: "btn btn-danger" %>
     </div>
   </div>
 
@@ -12,79 +12,25 @@
   </div>
 
   <div class="row">
-    <div class="col-18">
+    <div class="col-9">
       <h2><%= @zoo.name %></h2>
     </div>
-    <div class="col-4">
+    <div class="col-3">
       <%= link_to '編集する', edit_admin_zoo_path(@zoo), class: "btn btn-success" %>
       <%= link_to '削除する', admin_zoo_path(@zoo), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
     </div>
   </div>
 
-  <div class="row pt-3">
-    <div class="col-12">
-      <p><%= @zoo.description %></p>
-    </div>
-  </div>
+  <%= render 'public/zoos/zoo_info', zoo: @zoo %>
+</div>
 
-  <div class="row pt-5">
-    <div class="col-12">
-      <h4>施設情報</h4>
-      <table class="table">
-        <tr>
-          <th>住所</th>
-          <td><%= @zoo.address %></td>
-        </tr>
-        <tr>
-          <th>営業時間</th>
-          <td><%= @zoo.opening_hours %></td>
-        </tr>
-        <tr>
-          <th>定休日</th>
-          <td><%= @zoo.closing_day %></td>
-        </tr>
-        <tr>
-          <th>料金</th>
-          <td><%= @zoo.admission %></td>
-        </tr>
-        <tr>
-          <th>電話番号</th>
-          <td><%= @zoo.telephone_number %></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
+<div class="container">
   <div class="row pt-5">
     <div class="col-12">
       <h3>園内の動物たち</h3>
       <p>「登録中」状態の動物がユーザー側の動物園詳細に表示されます。</p>
     </div>
   </div>
-  <div class="row pt-4">
-    <div class="col-6">
-      <table class="table bg-light">
-        <thead class="thead-light">
-          <tr>
-            <th style="width: 80%;">動物名</th>
-            <th style="width: 20%;"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @animals.each do |animal| %>
-            <tr>
-              <td><%= animal.name %></td>
-              <td>
-                <% if @zoo_animals.exists?(animal_id: animal.id) %>
-                  <%= link_to '登録中', admin_zoo_zoo_animals_path(@zoo, animal_id: animal.id), method: :delete, class: "btn btn-sm btn-success" %>
-                <% else %>
-                  <%= link_to '解除中', admin_zoo_zoo_animals_path(@zoo, animal_id: animal.id), method: :post, class: "btn btn-sm btn-danger" %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
+
+  <%= render 'zoo_animals' %>
 </div>

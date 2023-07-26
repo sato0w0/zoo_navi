@@ -17,6 +17,7 @@
             <td class="bg-light">メールアドレス</td>
             <td><%= @user.email %></td>
           </tr>
+        </tbody>
       </table>
     </div>
   </div>
@@ -29,15 +30,15 @@
     </div>
   <% end %>
 
-  <div class='row pt-5'>
-    <div class='col-12'>
+  <div class="row pt-5">
+    <div class="col-12">
       <h3>投稿済みレビュー一覧</h3>
     </div>
   </div>
 
-  <div class='row'>
-    <div class='col-12'>
-      <table class='table'>
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
         <thead>
           <tr>
             <th>タイトル</th>
@@ -48,7 +49,9 @@
         <tbody>
           <% @zoo_reviews.each do |zoo_review| %>
             <tr>
-              <th style="width: 30%;"><%= link_to zoo_review.title, zoo_zoo_review_path(zoo_review.zoo, zoo_review), class: "zoo_review_#{zoo_review.id}" %></th>
+              <th style="width: 30%;">
+                <%= link_to zoo_review.title, zoo_zoo_review_path(zoo_review.zoo, zoo_review), class: "zoo_review_#{zoo_review.id}" %>
+              </th>
               <td>
                 <% if zoo_review.body.length <= 100 %>
                   <%= zoo_review.body %>
@@ -57,11 +60,16 @@
                   <%= link_to "もっと読む", zoo_zoo_review_path(zoo_review.zoo, zoo_review) %>
                 <% end %>
               </td>
-              <td style="width: 15%;"><%= render "public/review_comments/counter", zoo_review: zoo_review %></td>
-              <td style="width: 15%;"><%= render "public/zoo_reviews/static_rate", zoo_review: zoo_review %></td>
+              <td style="width: 15%;">
+                <%= render "public/review_comments/counter", zoo_review: zoo_review %>
+              </td>
+              <td style="width: 15%;">
+                <%= render "public/zoo_reviews/static_rate", zoo_review: zoo_review %>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
+</div>

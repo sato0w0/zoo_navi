@@ -1,11 +1,11 @@
-<div class='container pt-5'>
+<div class="container pt-5">
   <div class="row">
     <div class="col-12">
       <h3><%= "#{@user.nickname}さんの会員情報編集" %></h3>
     </div>
   </div>
 
-  <div class='row pt-4'>
+  <div class="row pt-4">
     <div class="col-12">
       <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
         <div class="form-group">

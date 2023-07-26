@@ -1,21 +1,34 @@
-<div class='container pt-3'>
-  <div class='row'>
+<div class="container pt-3">
+  <div class="row">
     <div class="col-12">
-      <h3 class="text-center">レビュー編集</h2>
-      <%= form_with model:@zoo_review, url: zoo_zoo_review_path(@zoo),local:true do |f| %>
+      <h3 class="text-center">レビュー編集</h3>
+      <% if @zoo_review.errors.any? %>
+        <%= @zoo_review.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @zoo_review.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <%= form_with model: @zoo_review, url: zoo_zoo_review_path(@zoo), local: true do |f| %>
         <div class="form-group">
           <%= f.label :タイトル %>
-          <%= f.text_field :title, class: 'form-control zoo_review_title' %>
+          <%= f.text_field :title, class: "form-control zoo_review_title" %>
         </div>
 
         <div class="form-group">
           <%= f.label :本文 %>
-          <%= f.text_area :body, rows:'5', class: 'form-control zoo_review_body' %>
+          <%= f.text_area :body, rows: "5", class: "form-control zoo_review_body" %>
         </div>
 
         <div class="form-group text-center">
-          <%= f.submit "コメントを保存", class: 'btn btn-success' %>
-          <%= link_to '保存せずに戻る', zoo_zoo_review_path(@zoo, @zoo_review), class: "btn btn-danger zoo_review_#{@zoo_review.id}" %>
+          <%= f.submit "編集を保存", class: "btn btn-success" %>
+          <%= link_to "保存せずに戻る", zoo_zoo_review_path(@zoo, @zoo_review), class: "btn btn-danger zoo_review_#{@zoo_review.id}" %>
         </div>
       <% end %>
     </div>

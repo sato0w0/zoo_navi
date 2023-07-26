@@ -15,13 +15,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
-    resources :zoos,         only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-      resource :zoo_animals, only: [:create, :destroy]
+    resources     :zoos,            only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+      resource    :zoo_animals,     only: [:create, :destroy]
     end
-    resources :animals,      only: [:index, :show, :new, :create, :edit, :update]
-    resources :animal_types, only: [:index, :create, :edit, :update]
-    resources :users,        only: [:index, :show, :edit, :update] do
-      resources :zoo_reviews, only: [:index, :show, :new, :edit, :create, :destroy, :update] do
+    resources     :animals,         only: [:index, :show, :new, :create, :edit, :update]
+    resources     :animal_types,    only: [:index, :create, :edit, :update]
+    resources     :users,           only: [:index, :show, :edit, :update] do
+      resources   :zoo_reviews,     only: [:index, :show, :new, :edit, :create, :destroy, :update] do
         resources :review_comments, only: [:create, :destroy]
       end
     end
@@ -35,9 +35,9 @@ Rails.application.routes.draw do
     get   'users/information'      => 'users#show',   as: 'user'
     get   'users/information/edit' => 'users#edit',   as: 'edit_user'
     patch 'users/information'      => 'users#update', as: 'update_user'
-    resources :animals, only: [:index, :show]
-    resources :zoos,    only: [:index, :show] do
-      resources :zoo_reviews, only: [:index, :show, :new, :edit, :create, :destroy, :update] do
+    resources     :animals,         only: [:index, :show]
+    resources     :zoos,            only: [:index, :show] do
+      resources   :zoo_reviews,     only: [:index, :show, :new, :edit, :create, :destroy, :update] do
         resources :review_comments, only: [:create, :destroy]
       end
     end

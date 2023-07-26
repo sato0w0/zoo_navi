@@ -1,9 +1,9 @@
 class Admin::ZooReviewsController < ApplicationController
+  before_action :authenticate_admin!
 
   def show
     @user = User.find(params[:user_id])
     @zoo_review = ZooReview.find(params[:id])
-    @zoo_reviews = ZooReview.find(params[:id])
     @review_comment = ReviewComment.new
   end
 

@@ -1,15 +1,15 @@
-<table class='table'>
+<table class="table">
   <thead>
     <tr>
       <th>投稿者</th>
       <th>コメント</th>
-      <th colspan="1"></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% zoo_review.review_comments.each do |review_comment| %>
       <tr>
-        <th style="width: 20%;"><%= review_comment.user.nickname %></th>
+        <td style="width: 20%;"><%= review_comment.user.nickname %></td>
         <td style="width: 70%;"><%= review_comment.comment %></td>
         <td style="width: 10%;">
           <% if review_comment.user == current_user %>

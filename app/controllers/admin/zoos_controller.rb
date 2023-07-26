@@ -1,4 +1,5 @@
 class Admin::ZoosController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @zoos = Zoo.all

@@ -1,4 +1,5 @@
 class Admin::ZooAnimalsController < ApplicationController
+  before_action :authenticate_admin!
 
   def create
     zoo_animal = ZooAnimal.new(zoo_id: params[:zoo_id], animal_id: params[:animal_id])

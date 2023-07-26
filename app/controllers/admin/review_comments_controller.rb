@@ -1,4 +1,5 @@
 class Admin::ReviewCommentsController < ApplicationController
+  before_action :authenticate_admin!
 
   def destroy
     @zoo_review = ZooReview.find(params[:zoo_review_id])

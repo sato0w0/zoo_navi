@@ -1,4 +1,6 @@
-<%= form_with(model:[zoo_review, review_comment], url: zoo_zoo_review_review_comments_path(@zoo, @zoo_review), local: false) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに入力", class: "w-100 comment-textarea" %>
-  <div class='text-center'><%= f.submit "コメントする", class: "btn btn-success" %></div>
+<%= form_with(model: [zoo_review, review_comment], url: zoo_zoo_review_review_comments_path(@zoo, @zoo_review), local: false) do |f| %>
+  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに入力", class: "w-100 comment-textarea" %>
+  <div class="text-center">
+    <%= f.submit "コメントする", class: "btn btn-success" %>
+  </div>
 <% end %>

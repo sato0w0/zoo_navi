@@ -1,4 +1,5 @@
 class Admin::AnimalsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     if params[:name].nil?

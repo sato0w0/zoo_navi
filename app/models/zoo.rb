@@ -1,8 +1,18 @@
 class Zoo < ApplicationRecord
-  has_many :zoo_animals
-  has_many :zoo_reviews
-  has_many :animals, through: :zoo_animals
+  has_many :zoo_animals, dependent: :destroy
+  has_many :zoo_reviews, dependent: :destroy
+  has_many :animals,     through: :zoo_animals
   has_one_attached :image
+
+  validates :image,            presence: true
+  validates :name,             presence: true
+  validates :description,      presence: true
+  validates :region,           presence: true
+  validates :address,          presence: true
+  validates :opening_hours,    presence: true
+  validates :closing_day,      presence: true
+  validates :admission,        presence: true
+  validates :telephone_number, presence: true
 
   def get_image(width, height)
     unless image.attached?
