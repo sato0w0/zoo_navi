@@ -28,14 +28,12 @@
 - 他の人が投稿した動物園についてのレビューを確認する
 
 ## 設計書
-設計書 | URL
--|-
-画面遷移図 | 24
-ワイヤーフレーム | 32
-ER図 | 32
-テーブル定義書 | https://docs.google.com/spreadsheets/d/1VvlaudSOimDt_7UqeHGCk6fnD9oOPAl24JZSdaX6uNw/edit#gid=1415007222
-アプリケーション詳細設計書 | 32
-テスト仕様書 | 32
+[画面遷移図](https://docs.google.com/spreadsheets/d/1VvlaudSOimDt_7UqeHGCk6fnD9oOPAl24JZSdaX6uNw/edit#gid=1415007222)
+[ワイヤーフレーム](https://docs.google.com/spreadsheets/d/1VvlaudSOimDt_7UqeHGCk6fnD9oOPAl24JZSdaX6uNw/edit#gid=1415007222)
+[ER図](https://docs.google.com/spreadsheets/d/1VvlaudSOimDt_7UqeHGCk6fnD9oOPAl24JZSdaX6uNw/edit#gid=1415007222)
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1VvlaudSOimDt_7UqeHGCk6fnD9oOPAl24JZSdaX6uNw/edit#gid=1415007222)
+[アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1VvlaudSOimDt_7UqeHGCk6fnD9oOPAl24JZSdaX6uNw/edit#gid=1415007222)
+[テスト仕様書](https://docs.google.com/spreadsheets/d/1VvlaudSOimDt_7UqeHGCk6fnD9oOPAl24JZSdaX6uNw/edit#gid=1415007222)
 
 ## 開発環境
 - OS：Linux(CentOS)
