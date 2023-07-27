@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+ header {
+  background-image: url("logo.png");
+  background-size: 100px 50px;
+ }
