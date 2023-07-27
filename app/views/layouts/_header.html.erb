@@ -1,12 +1,12 @@
 <header>
   <nav class="navbar navbar-light" style="background-color: #ffea85;">
     <% if admin_signed_in? %>
-      <div><%= image_tag "logo.png", style: "width: 100px; height: 50px; object-fit: cover;" %></div>
+      <h3>ZooNavi</h3>
     <% elsif user_signed_in? %>
-      <div><%= image_tag "logo.png", style: "width: 100px; height: 50px; object-fit: cover;" %></div>
+      <h3>ZooNavi</h3>
     <% else %>
       <%= link_to root_path, class: "navbar-brand" do %>
-        <div><%= image_tag "logo.png", style: "width: 100px; height: 50px; object-fit: cover;" %></div>
+        <h3>ZooNavi</h3>
       <% end %>
     <% end %>
 
