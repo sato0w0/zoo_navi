@@ -1,12 +1,12 @@
 <header>
   <nav class="navbar navbar-light" style="background-color: #ffea85;">
     <% if admin_signed_in? %>
-      <div><%= image_tag "logo", style: "width: 100px; height: 50px; object-fit: cover;" %></div>
+      <div><%= image_tag "logo.png", style: "width: 100px; height: 50px; object-fit: cover;" %></div>
     <% elsif user_signed_in? %>
-      <div><%= image_tag "logo", style: "width: 100px; height: 50px; object-fit: cover;" %></div>
+      <div><%= image_tag "logo.png", style: "width: 100px; height: 50px; object-fit: cover;" %></div>
     <% else %>
       <%= link_to root_path, class: "navbar-brand" do %>
-        <div><%= image_tag "logo", style: "width: 100px; height: 50px; object-fit: cover;" %></div>
+        <div><%= image_tag "logo.png", style: "width: 100px; height: 50px; object-fit: cover;" %></div>
       <% end %>
     <% end %>
 
@@ -26,7 +26,7 @@
             <%= link_to "動物種一覧", admin_animal_types_path, class: 'nav-link text-dark btn' %>
           </li>
           <li>
-            <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark btn' %>
+            <%= link_to "会員一覧", admin_users_path, class: 'nav-link text-dark btn' %>
           </li>
           <li>
             <%= link_to "ZooNaviについて", home_about_path, class: 'nav-link text-dark btn' %>
