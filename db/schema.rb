@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2023_07_14_210626) do
     t.string "habitat", null: false
     t.string "body_length", null: false
     t.string "body_weight", null: false
-    t.string "feature", null: false
+    t.text "feature", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

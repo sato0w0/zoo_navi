@@ -13,8 +13,4 @@ class Public::AnimalsController < ApplicationController
     @zoos = @animal.zoos.order(:region)
   end
 
-  def search
-    @animals = Animal.search_for(params[:word])
-  end
-
 end

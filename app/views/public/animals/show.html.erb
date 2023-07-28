@@ -47,7 +47,8 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <% @zoos.group_by(&:region).each do |region, zoos| %>
+      <% sorted_zoos = @zoos.sort_by { |zoo| regions_for_select.index(zoo.region) } %>
+      <% sorted_zoos.group_by(&:region).each do |region, zoos| %>
         <div class="row pt-4">
           <div class="col-12 pt-2">
             <h4 class="border-bottom border-warning"><%= region %></h4>

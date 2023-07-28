@@ -6,7 +6,7 @@ class CreateAnimals < ActiveRecord::Migration[6.1]
       t.string  :habitat,        null:false
       t.string  :body_length,    null:false
       t.string  :body_weight,    null:false
-      t.string  :feature,        null:false
+      t.text    :feature,        null:false
       t.timestamps
     end
   end
