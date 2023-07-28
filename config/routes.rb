@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     resources     :animals,         only: [:index, :show, :new, :create, :edit, :update]
     resources     :animal_types,    only: [:index, :create, :edit, :update]
     resources     :users,           only: [:index, :show, :edit, :update] do
-      resources   :zoo_reviews,     only: [:index, :show, :new, :edit, :create, :destroy, :update] do
-        resources :review_comments, only: [:create, :destroy]
+      resources   :zoo_reviews,     only: [:index, :show, :destroy] do
+        resources :review_comments, only: [:destroy]
       end
     end
   end
