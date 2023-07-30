@@ -27,6 +27,13 @@
 - 動物園についてのレビューを投稿する
 - 他の人が投稿した動物園についてのレビューを確認する
 
+## 設計書
+- [画面遷移図（管理者側）](https://drive.google.com/file/d/13G12lWfjmaGOjNf1bi3zpJN9vA1Aho0O/view)
+- [画面遷移図（会員側）](https://drive.google.com/file/d/1E7vi5Ew5MMxkzaEFPLau7EtgMuYZUMwH/view)
+- [ER図](https://drive.google.com/file/d/1ENfU2xu7Q296DtytCSI2pjWkk1wIniUl/view)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1VvlaudSOimDt_7UqeHGCk6fnD9oOPAl24JZSdaX6uNw/edit#gid=1415007222)
+- [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1WIYzEcQDSfLYEcV4KKdxpZX7ktm-CRxMGYwiQuKU_ms/edit#gid=549108681)
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
